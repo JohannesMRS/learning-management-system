@@ -29,6 +29,8 @@ Route::middleware(['cek.login:admin'])->group(function(){
     Route::delete('/admin/users/{id}', [AdminController::class, 'usersDestroy'])->name('admin.users.destroy');
     Route::get('/admin/users/{id}/edit', [AdminController::class, 'usersEdit'])->name('admin.users.edit');
     Route::put('/admin/users/{id}', [AdminController::class, 'usersUpdate'])->name('admin.users.update');
+    Route::get('/admin/user/create', [AdminController::class, 'usersCreate'])->name('admin.users.create');
+    Route::post('/admin/users', [AdminController::class, 'usersStore'])->name('admin.users.store');
 });
 
 Route::get('/register', [AuthController::class, 'register'])->name('register');

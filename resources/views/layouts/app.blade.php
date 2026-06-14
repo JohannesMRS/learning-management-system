@@ -13,9 +13,9 @@
                 Hello Johannes
             </div>
             <div class = " mt-10 p-4">
-                <a href="{{ route('admin.index') }}" class = "p-3 pl-5 block text-xl hover:bg-amber-200">Dashboard</a>
-                <a href="{{ route('admin.users') }}" class = "p-3 pl-5 block text-xl mt-2 hover:bg-amber-200">User</a>
-                <a href="{{ route('admin.generate') }}" class = "p-3 pl-5 block text-xl mt-2 hover:bg-amber-200">Generate Code</a>
+                <a href="{{ route('admin.index') }}" class = "p-3 pl-5 block text-xl hover:bg-amber-200 font-mono font-bold">Dashboard</a>
+                <a href="{{ route('admin.users') }}" class = "p-3 pl-5 block text-xl mt-2 hover:bg-amber-200 font-mono font-bold">User</a>
+                <a href="{{ route('admin.generate') }}" class = "p-3 pl-5 block text-xl mt-2 hover:bg-amber-200 font-mono font-bold">Generate Code</a>
             </div>
         </aside>
 

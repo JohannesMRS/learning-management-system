@@ -9,7 +9,7 @@
     <div class="flex justify-between items-center mb-6">
         <h3 class="text-xl font-bold text-gray-800 tracking-wide">Users Detail</h3>
 
-        <a href="#" class="bg-amber-300 hover:bg-amber-400 text-white px-5 py-2.5  text-sm font-semibold transition duration-150 shadow-sm flex items-center gap-2">
+        <a href="{{ route('admin.users.create')}}" class="bg-amber-300 hover:bg-amber-400 text-white px-5 py-2.5  text-sm font-semibold transition duration-150 shadow-sm flex items-center gap-2">
             <i class="fa-solid fa-plus"></i> Tambah Data
         </a>
     </div>
