@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Johannes',
             'email' => 'johannes12@gmail.com',
-            'password'=>'johannes12345',
+            'password' => \Illuminate\Support\Facades\Hash::make('password123'),
             'registration_code' => 'XMI-455',
         ]);
 

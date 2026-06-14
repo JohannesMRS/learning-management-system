@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role', ['admin', 'mentee', 'mentor'])->default('mentee');
-            $table->string('regsitration_code')->nullable();
+            $table->string('registration_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
