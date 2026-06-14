@@ -12,14 +12,14 @@
         <form action="{{ route('loginProses') }}" method = "POST">
             @csrf
             @if ($errors->any())
-    <div style="background-color: #fee2e2; color: #dc2626; padding: 10px; border-radius: 8px; margin-bottom: 15px;">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+                <div style="background-color: #fee2e2; color: #dc2626; padding: 10px; border-radius: 8px; margin-bottom: 15px;">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class = "flex flex-col pl-8 pr-8">
                 <label for="email" class = "mb-2">Email</label>
                 <input type="text" name = "email" placeholder = "Masukkan email" class = "border border-gray-400 rounded h-10 pl-3">
@@ -30,6 +30,10 @@
             </div>
             <button type = "submit"  class = "w-10/12 h-10 block mx-auto mt-10 bg-amber-400">Login</button>
         </form>
+
+        <p>
+            Belum punya akun? <a href="{{ route('register') }}">Daftar Disini</a>
+        </p>
     </div>
 </body>
 </html>

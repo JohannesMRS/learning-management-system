@@ -15,10 +15,19 @@ Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'loginProses'])->name('loginProses');
 
 
-Route::middleware(['cek.login'])->group(function(){
+Route::middleware(['cek.login:mentee'])->group(function(){
     Route::get('/mentee', [MenteeController::class, 'index'])->name('mentee.index');
-    Route::get('/mentor', [MentorController::class, 'index'])->name('mentor.index');
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
 });
+Route::middleware(['cek.login:mentor'])->group(function(){
+    Route::get('/mentor', [MentorController::class, 'index'])->name('mentor.index');
+});
+Route::middleware(['cek.login:admin'])->group(function(){
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+});
+
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'registerProses'])->name('registerProses');
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+

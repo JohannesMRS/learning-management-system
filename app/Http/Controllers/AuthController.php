@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Models\RegistrationCode;
 
 class AuthController extends Controller
 {
@@ -62,6 +63,52 @@ public function index(Request $request)
         ]);
 
     }
+
+    public function register(){
+        return view('auth.register');
+    }
+
+    public function registerProses(Request $request)
+{
+    // 1. Validasi Input Form
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|min:6|confirmed',
+        'registration_code' => 'required'
+    ], [
+        'email.unique' => 'Email ini sudah terdaftar, bang!',
+        'password.min' => 'Password minimal 6 karakter, bang!',
+        'password.confirmed' => 'Waduh bang, konfirmasi password-mu gak cocok!'
+    ]);
+
+    // 2. 🔍 SENSOR DATABASE: Cari apakah token ada di database dan statusnya BELUM DIPAKAI (is_used = 0)
+    $tokenData = RegistrationCode::where('code', $request->registration_code)
+                                  ->where('is_used', 0)
+                                  ->first();
+
+    // Jika token tidak ditemukan atau sudah hangus
+    if (!$tokenData) {
+        return back()->withErrors([
+            'registration_code' => 'Waduh bang, Token Salah atau sudah pernah digunakan oleh orang lain!'
+        ])->withInput();
+    }
+
+    // 3. 🚀 SENSOR LOLOS: Simpan akun Mentee baru ke database
+    User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+        'role' => 'mentee'
+    ]);
+
+    // 4. 🔥 HANGUSKAN TOKEN: Ubah status token menjadi sudah dipakai agar tidak bisa dicolong orang lain
+    $tokenData->update([
+        'is_used' => 1
+    ]);
+
+    return redirect()->route('login')->with('success', 'Akun berhasil dibuat! Silakan login, bang.');
+}
 
     public function logout(Request $request){
         $request->session()->forget(['user_id', 'user_name', 'user_role']);
