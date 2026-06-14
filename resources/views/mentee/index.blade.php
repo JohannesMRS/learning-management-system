@@ -12,6 +12,6 @@
             Logout
         </button>
     </form>
-    <h1>Hello Mentee</h1>
+
 </body>
 </html>

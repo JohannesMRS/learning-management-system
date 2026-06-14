@@ -30,4 +30,5 @@ Route::post('/register', [AuthController::class, 'registerProses'])->name('regis
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
+Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+Route::get('/admin/generate', [AdminController::class, 'generate'])->name('admin.generate');
