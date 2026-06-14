@@ -38,9 +38,15 @@
                         {{ $data->registration_code ?? '-' }}
                     </td>
                     <td class="p-4 text-sm text-center font-medium">
-                        <a href="#" class="text-red-600 hover:text-red-900 mx-1 transition duration-150">Delete</a>
+                        <form action="{{ route('admin.users.destroy', $data->id) }}" method = "POST" onclick="return confirm('Yakin mau hapus {{ $data->name }}?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type = "submit">Delete</button>
+                        </form>
                         <span class="text-gray-300">|</span>
-                        <a href="#" class="text-blue-600 hover:text-blue-900 mx-1 transition duration-150">Update</a>
+                        <a href="{{ route('admin.users.edit', $data->id) }}" class="text-blue-600 hover:text-blue-900 mx-1 transition duration-150">
+                            Update
+                        </a>
                     </td>
                 </tr>
                 @endforeach

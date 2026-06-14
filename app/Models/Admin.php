@@ -11,6 +11,7 @@ class Admin extends Model
         'id',
         'name',
         'email',
+        'password',
         'registration_code'
     ];
 }

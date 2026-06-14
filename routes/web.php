@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminController;
 Route::get('/', [AuthController::class, 'index'])->name('login');
 
 
+
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'loginProses'])->name('loginProses');
 
@@ -23,6 +24,11 @@ Route::middleware(['cek.login:mentor'])->group(function(){
 });
 Route::middleware(['cek.login:admin'])->group(function(){
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+    Route::get('/admin/generate', [AdminController::class, 'generate'])->name('admin.generate');
+    Route::delete('/admin/users/{id}', [AdminController::class, 'usersDestroy'])->name('admin.users.destroy');
+    Route::get('/admin/users/{id}/edit', [AdminController::class, 'usersEdit'])->name('admin.users.edit');
+    Route::put('/admin/users/{id}', [AdminController::class, 'usersUpdate'])->name('admin.users.update');
 });
 
 Route::get('/register', [AuthController::class, 'register'])->name('register');
@@ -30,5 +36,4 @@ Route::post('/register', [AuthController::class, 'registerProses'])->name('regis
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
-Route::get('/admin/generate', [AdminController::class, 'generate'])->name('admin.generate');
+
