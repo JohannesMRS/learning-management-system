@@ -45,6 +45,7 @@ public function index(Request $request)
             $request->session()->put('user_id', $user->id);
             $request->session()->put('user_name', $user->name);
             $request->session()->put('user_role', $user->role);
+            $request->session()->put('user_email', $user->email);
 
             $request->session()->regenerate();
 
@@ -70,7 +71,6 @@ public function index(Request $request)
 
     public function registerProses(Request $request)
 {
-    // 1. Validasi Input Form
     $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email',
@@ -82,19 +82,17 @@ public function index(Request $request)
         'password.confirmed' => 'Waduh bang, konfirmasi password-mu gak cocok!'
     ]);
 
-    // 2. 🔍 SENSOR DATABASE: Cari apakah token ada di database dan statusnya BELUM DIPAKAI (is_used = 0)
     $tokenData = RegistrationCode::where('code', $request->registration_code)
                                   ->where('is_used', 0)
                                   ->first();
 
-    // Jika token tidak ditemukan atau sudah hangus
     if (!$tokenData) {
         return back()->withErrors([
             'registration_code' => 'Waduh bang, Token Salah atau sudah pernah digunakan oleh orang lain!'
         ])->withInput();
     }
 
-    // 3. 🚀 SENSOR LOLOS: Simpan akun Mentee baru ke database
+
     User::create([
         'name' => $request->name,
         'email' => $request->email,
@@ -102,7 +100,6 @@ public function index(Request $request)
         'role' => 'mentee'
     ]);
 
-    // 4. 🔥 HANGUSKAN TOKEN: Ubah status token menjadi sudah dipakai agar tidak bisa dicolong orang lain
     $tokenData->update([
         'is_used' => 1
     ]);
