@@ -9,8 +9,9 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Kelas;
 
-#[Fillable(['name', 'email', 'password', 'role', 'registration_token'])]
+#[Fillable(['id', 'name', 'email', 'password', 'role', 'registration_token'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -28,5 +29,9 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function kelas(){
+        return $this->hasMany(Kelas::class, 'id_user');
     }
 }

@@ -42,21 +42,19 @@ public function index(Request $request)
 
 
         if($user && Hash::check($request->password, $user->password)){
-            $request->session()->put('user_id', $user->id);
-            $request->session()->put('user_name', $user->name);
-            $request->session()->put('user_role', $user->role);
-            $request->session()->put('user_email', $user->email);
+            // If statement lama = $user && Hash::check($request->password, $user->password)
+            // $request->session()->put('user_id', $user->id);
+            // $request->session()->put('user_name', $user->name);
+            // $request->session()->put('user_role', $user->role);
+            // $request->session()->put('user_email', $user->email);
+            Auth::login($user);
+            // $role = Auth::user()->role;
 
             $request->session()->regenerate();
 
-                $role = $user->role;
-                if($role === 'admin'){
-                    return redirect()->route('admin.index');
-                }elseif($role === 'mentor'){
-                    return redirect()->route('mentor.index');
-                }else{
-                    return redirect()->route('mentee.index');
-                }
+                if($user->role === 'admin') return redirect()->route('admin.index');
+                if($user->role === 'mentor') return redirect()->route('mentor.index');
+                return redirect()->route('mentee.index');
         }
 
         return back()->withErrors([

@@ -20,13 +20,13 @@
     <!-- Bungkus Tombol dan Menu di dalam satu div 'relative' -->
     <div class="relative">
         <button id="dropDownButton" class="flex flex-col h-10 w-10 justify-center items-center focus:outline-none cursor-pointer rounded-full bg-gray-200 hover:bg-gray-400 transition duration-200 font-mono">
-            <span class="font-semibold text-xl text-gray-800">{{ Str::of(session('user_name'))->headline()->explode(' ')->map(fn($word)=>mb_substr($word, 0, 1))->take(2)->implode('') }}</span>
+            <span class="font-semibold text-xl text-gray-800">{{ Str::of(auth()->user()->name)->headline()->explode(' ')->map(fn($word)=>mb_substr($word, 0, 1))->take(2)->implode('') }}</span>
 
         </button>
 
         <!-- Menu Dropdown (Posisinya absolute agar melayang) -->
         <div id="dropDownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100">
-            <span class="text-sm text-gray-500 ml-4">{{ session('user_email') }}</span>
+            <span class="text-sm text-gray-500 ml-4">{{ auth()->user()->name }}</span>
             <form action="{{ route('logout') }}" method="POST" class="block w-full">
                 @csrf
                 <button type="submit" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 transition-colors">
@@ -46,10 +46,13 @@
 
 
 
-    @foreach($datas as $data)
-    <div>
-        {{ $data->nama_module }}
-    </div>
+    @foreach($users->kelas as $kelas)
+        <h2>{{ $kelas->nama_kelas }}</h2>
+        @foreach($kelas->modules as $module)
+            <div>
+                {{ $module->nama_module }}
+            </div>
+        @endforeach
     @endforeach
 
     <script>

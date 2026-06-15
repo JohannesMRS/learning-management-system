@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
 class AuthMiddleware
 {
@@ -15,13 +16,13 @@ class AuthMiddleware
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        if(!$request->session()->has('user_id')){
+        if(!Auth::check()){
             return redirect()->route('login')->withErrors([
                 'login_error'=> 'Login Dulu Bang'
             ]);
         }
 
-        $userRole = $request->session()->get('user_role');
+        $userRole = Auth::user()->role;
         if(!in_array($userRole, $roles)){
             abort(403, 'Anda tidak punya hak akses');
             return back();

@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Modules;
+use Illuminate\Support\Facades\Auth;
 
 class MenteeController extends Controller
 {
     public function index(){
-        $datas = Modules::all();
-        return view('mentee.index', compact('datas'));
+        if(!Auth::check()){
+            return redirect()->route('login');
+        }
+        $users = Auth::user()->load('kelas.modules');
+        return view('mentee.index', compact('users'));
     }
 
 }
