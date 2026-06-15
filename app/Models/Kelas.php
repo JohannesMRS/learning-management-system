@@ -18,7 +18,7 @@ class Kelas extends Model
     ];
 
     public function user(){
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsToMany(User::class, 'kelas_user', 'id_kelas', 'id_user');
     }
 
     public function modules(){
