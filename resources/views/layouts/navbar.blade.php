@@ -1,20 +1,19 @@
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mente | @yield('title')</title>
     @vite('resources/css/app.css')
 </head>
-<body> --}}
-
-    {{-- <nav class="flex h-16 justify-between p-5 pl-15 pr-10 items-center shadow-[2px_0px_5px_2px_rgba(128,128,128,0.2)]">
+<body>
+    <nav class="flex fixed bg-white w-full h-16 justify-between p-5 pl-15 pr-10 items-center shadow-[2px_0px_5px_2px_rgba(128,128,128,0.2)]" id = "navbar-mentee">
     <div class = "text-xl font-bold font-mono bg-linear-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
         Mentoring
     </div>
     <div class="flex gap-10">
-        <a href="#">Home</a>
-        <a href="#">Module</a>
+        <a href="{{ route('mentee.index') }}">Home</a>
+        <a href="{{ route('mentee.module') }}">Module</a>
     </div>
 
     <!-- Bungkus Tombol dan Menu di dalam satu div 'relative' -->
@@ -35,23 +34,8 @@
             </form>
         </div>
     </div>
-</nav> --}}
+</nav>
 
-    {{-- <form action="{{ route('logout') }}" method = "POST">
-        @csrf
-        <button type = "submit">
-            Logout
-        </button>
-    </form> --}}
-
-@extends('layouts.navbar')
-
-@section('title', 'Home')
-
-@section('content')
-
-    <div>Hello</div>
-
-@endsection
-{{-- </body>
-</html> --}}
+@yield('content')
+</body>
+</html>

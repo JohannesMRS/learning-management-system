@@ -16,4 +16,12 @@ class MenteeController extends Controller
         return view('mentee.index', compact('users'));
     }
 
+    public function module(){
+        if(!Auth::check()){
+            return redirect()->route('login');
+        }
+        $users = Auth::user()->load('kelas.modules');
+        return view('mentee.module', compact('users'));
+    }
+
 }
