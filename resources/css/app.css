@@ -39,3 +39,8 @@ body::-webkit-scrollbar {
     transform: scale(1.1);
     filter: brightness(70%);
 }
+
+.nav-link.active {
+    color: blue;
+    text-decoration: underline;
+}

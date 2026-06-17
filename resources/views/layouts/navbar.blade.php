@@ -12,8 +12,8 @@
         Mentoring
     </div>
     <div class="flex gap-10">
-        <a href="{{ route('mentee.index') }}">Home</a>
-        <a href="{{ route('mentee.module') }}">Module</a>
+        <a href="{{ route('mentee.index') }}" class = "nav-link">Home</a>
+        <a href="{{ route('mentee.module') }}" class = "nav-link">Module</a>
     </div>
 
     <!-- Bungkus Tombol dan Menu di dalam satu div 'relative' -->
@@ -37,5 +37,7 @@
 </nav>
 
 @yield('content')
+
+<script src = "{{ asset('js/script.js') }}"></script>
 </body>
 </html>
