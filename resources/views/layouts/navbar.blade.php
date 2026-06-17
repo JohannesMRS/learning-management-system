@@ -36,8 +36,22 @@
     </div>
 </nav>
 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const currentPage = window.location.pathname;
+
+        navLinks.forEach((link) => {
+            const linkPath = new URL(link.href).pathname;
+
+            if (currentPage === linkPath) {
+                link.classList.add("active");
+            }
+        });
+    });
+
+</script>
 @yield('content')
 
-<script src = "{{ asset('js/script.js') }}"></script>
 </body>
 </html>

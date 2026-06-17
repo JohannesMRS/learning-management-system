@@ -41,6 +41,7 @@ body::-webkit-scrollbar {
 }
 
 .nav-link.active {
-    color: blue;
     text-decoration: underline;
+    text-decoration-color: gray;
+    text-underline-offset: 8px;
 }
