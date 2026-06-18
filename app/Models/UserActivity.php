@@ -9,9 +9,9 @@ class UserActivity extends Model
 {
     protected $table = 'user_activity';
     protected $primaryKey = 'id';
+    public $timestamps = false;
 
     protected $fillable = [
-        'id',
         'id_user',
         'id_module',
         'accessed_at'

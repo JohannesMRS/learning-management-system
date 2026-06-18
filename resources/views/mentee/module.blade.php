@@ -16,7 +16,6 @@
 
 <section class = "bg-white w-11/12 mx-auto mt-10 p-10 pt-8 " id = "module-container">
     @foreach($users->kelas as $kelas)
-        <h1 class = "text-2xl font-mono">Kelas {{ $kelas->nama_kelas }}</h1>
         <div class = "flex gap-10 justify-center items-center mt-10" id = "module">
             @forelse($kelas->modules as $module)
                 <div class = " bg-white h-96 shadow-[0px_2px_5px_2px_rgba(128,128,128,0.2)] rounded-2xl border border-gray-100" id= "card-module">

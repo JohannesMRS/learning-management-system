@@ -25,6 +25,9 @@
 
         <!-- Menu Dropdown (Posisinya absolute agar melayang) -->
         <div id="dropDownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100">
+            @foreach($users->kelas as $kelas)
+            <h1 class = "text-2xl font-mono">Kelas {{ $kelas->nama_kelas }}</h1>
+            @endforeach
             <span class="text-sm text-gray-500 ml-4">{{ auth()->user()->name }}</span>
             <form action="{{ route('logout') }}" method="POST" class="block w-full">
                 @csrf

@@ -21,6 +21,7 @@ Route::middleware(['cek.login:mentee'])->group(function(){
     Route::get('/mentee/module', [MenteeController::class, 'module'])->name('mentee.module');
     Route::get('/mentee/navbar', [MenteeController::class, 'navbar'])->name('mentee.navbar');
     Route::get('/mentee/module/{id}', [MenteeController::class, 'activity'])->name('mentee.detail');
+    Route::get('/mentee/module/activity/{id_module}', [MenteeController::class], 'activity')->name('mentee.activty');
 });
 Route::middleware(['cek.login:mentor'])->group(function(){
     Route::get('/mentor', [MentorController::class, 'index'])->name('mentor.index');
