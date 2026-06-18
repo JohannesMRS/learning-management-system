@@ -5,7 +5,7 @@
 
 ## Teknologi Yang Digunakan
 
-* **Backend & Framework:** ![Laravel](https://laravel.com/) (versi 13.x)
-* **Database:** ![MySQL](https://www.mysql.com/)
-* **Frontend Styling:** ![Tailwindcss](https://tailwindcss.com/) (Versi 4.3)
-* **Interactivity:** ![Javascript](https://web.dev/javascript?hl=id)
+*   **Backend & Framework:** ![Laravel](https://shields.io) (Versi 10/11)
+*   **Database:** ![MySQL](https://shields.io) 
+*   **Frontend Styling:** ![TailwindCSS](https://shields.io)
+*   **Interaktivitas:** ![JavaScript](https://shields.io) (Vanilla JS)
