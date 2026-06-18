@@ -13,8 +13,12 @@ class MenteeController extends Controller
         if(!Auth::check()){
             return redirect()->route('login');
         }
+
+
         $users = Auth::user()->load('kelas.modules');
-        return view('mentee.index', compact('users'));
+
+        $recentModules = UserActivity::where('id_user', $users->id)->with('module')->orderBy('accessed_at', 'desc')->limit(3)->get();
+        return view('mentee.index', compact('users', 'recentModules'));
     }
 
     public function module(){
@@ -25,11 +29,16 @@ class MenteeController extends Controller
         return view('mentee.module', compact('users'));
     }
 
-    public function activity($id){
+    public function activity($id_module){
         UserActivity::updateOrCreate(
-            ['id_user' => Auth::id(), 'id_module'=>$id],
+            ['id_user' => Auth::id(), 'id_module'=>$id_module],
             ['accessed_at' => now()]
         );
+
+        $module = Modules::findOrFail($id_module);
+
+        return view('mentee.module', compact('module'));
+
     }
 
     // menambahkan method activity

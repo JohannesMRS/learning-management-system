@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Modules;
 
 class UserActivity extends Model
 {
@@ -15,4 +16,8 @@ class UserActivity extends Model
         'id_module',
         'accessed_at'
     ];
+
+    public function module(){
+        return $this->belongsTo(Modules::class, 'id_module', 'id_module');
+    }
 }
