@@ -8,7 +8,7 @@
     <section class="">
         <div class = "w-full flex flex-col justify-center item-center mt-52">
             <h1 class = "text-center text-4xl font-bold">Selamat Datang Kembali <span class = "text-purple-500">{{ Auth::user()->name }}</span></h1>
-            <p class = "text-center mt-20 "><a href="{{ route('mentee.module') }}" class = "bg-linear-to-r from-purple-500 to-blue-500 p-2 text-white hover:bg-blue-500">Lanjut Belajar</a></p>
+            <p class = "text-center mt-20 "><a href="{{ route('mentee.module') }}" class = "bg-purple-500 p-3 text-white text-[18px] hover:bg-blue-500 transition duration-200 rounded">Lanjut Belajar &rarr;</a> </p>
         </div>
         <div class="max-w-6xl mx-auto mt-12 px-6">
             <h2 class="text-2xl font-bold text-gray-800 mb-6">Lanjutkan Belajar</h2>
@@ -19,7 +19,7 @@
                         <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
                             <h3 class="font-bold text-lg text-gray-800">{{ $history->module->nama_module }}</h3>
                             <p class="text-sm text-gray-500 mb-4">
-                                Diakses {{ $history->accessed_at ? \Carbon\Carbon::parse($history->accessed_at)->diffForHumans() : 'baru saja' }}
+                                Terakhir Di Akses:  {{ $history->accessed_at ? \Carbon\Carbon::parse($history->accessed_at)->diffForHumans() : 'baru saja' }}
                             </p>
                             <a href="{{ route('mentee.detail', $history->id_module) }}"
                             class="text-blue-600 font-semibold hover:text-blue-800 transition">
