@@ -37,5 +37,37 @@
 
     </section>
 
+    <footer class = "bottom-0 left-0 right-0 h-60 bg-[#3c3c3c] text-white mt-10">
+        <div class = "flex justify-between p-5 gap-20 ml-7 pt-10">
+            <div class = "w-70">
+                <h2 class = "font-bold">Alamat</h2>
+                <p class = "text-gray-300 text-[14px] mt-2">
+                    Jalan Almamater No. 1, Kampus USU, Padang Bulan, Kecamatan Medan Baru, Kota Medan, Sumatera Utara 20155.
+                </p>
+                <a target = "_blank" href="https://www.google.com/maps/place/Jl.+Almamater+No.1,+Padang+Bulan,+Kec.+Medan+Baru,+Kota+Medan,+Sumatera+Utara+20155/@3.5638678,98.6545508,18z/data=!3m1!4b1!4m6!3m5!1s0x30312fde9d7a440f:0xaec0e9e45b65b8f!8m2!3d3.563754!4d98.6538708!16s%2Fg%2F11g0dh7n7b?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D" class = "text-blue-400 ">
+                    Lihat di Maps
+                <b>&rarr;</b></a>
+            </div>
+            <div class = "w-70">
+                <h2 class = "font-bold">Media Sosial</h2>
+                <ul class = "mt-2 text-[14px]">
+                    <li class = "mb-1 transition duration-300 ease-in-out hover:scale-105"><a href="" class = "text-gray-300 hover:text-purple-500 ">Instagram</a></li>
+                    <li class = "mb-1 transition duration-300 ease-in-out hover:scale-105"><a href="" class = "text-gray-300 hover:text-purple-500 ">LinkedIn</a></li>
+                    <li class = "mb-1 transition duration-300 ease-in-out hover:scale-105"><a href="" class = "text-gray-300 hover:text-purple-500 ">Twitter</a></li>
+                    <li class = "mb-1 transition duration-300 ease-in-out hover:scale-105"><a href="" class = "text-gray-300 hover:text-purple-500 ">Facebook</a></li>
+                </ul>
+
+            </div>
+            <div class = "w-70">
+                <h2 class = "font-bold">Diskusi</h2>
+                <p class = "text-gray-300 text-[14px] mt-2">Punya pertanyaan?</p>
+                <p class = "text-gray-300 text-[14px] mt-2">Kami terbuka untuk berdiskusi</p>
+                <a href="mailto:sibaranijohannes8@gmail.com" class = "text-blue-400">Kirim Pertanyaan <b>&rarr;</b></a>
+            </div>
+        </div>
+        <div class = "flex border-t border-t-gray-600 justify-center item-center  bg-purple-500 bottom-0 p-4 left-0">
+            <p class = "text-gray-200 text-[13px]">© 2026 VeloLearn. All right reserved</p>
+        </div>
+    </footer>
 @endsection
 
